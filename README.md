@@ -1,5 +1,5 @@
 # texrun.vim
-A auto compiler
+A auto compiler for tex
 
 ## Install
 

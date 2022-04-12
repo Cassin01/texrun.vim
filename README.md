@@ -1,13 +1,26 @@
 # texrun.vim
-A auto run for tex
+A runner for lualatex.
+
+## Requirement
+
+``lualatex``
 
 ## Install
 
-### For vim-plug
+### vim-plug
+
 ```vim
 Plug 'Cassin01/texrun.vim'
 let g:texrun#file_name = 'l02.tex'
 ```
+
+### packer
+
+```fennel
+(use {1 :Cassin01/texrun.vim
+      :setup (λ [] (tset vim.g :texrun#file_name :l02.tex))})
+```
+
 
 ## Usage
 

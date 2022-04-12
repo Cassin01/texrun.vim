@@ -22,11 +22,14 @@ endfunction
 function! s:compile_latex()
   " if expand("%") == 'l02.tex' || expand("%") == 'l03.tex'
   if expand("%") == g:texrun#file_name
+    let stdout = ""
     function! s:OnEvent(job_id, data, event) dict
       if a:event == 'stdout'
         let str = self.shell.' stdout: '.join(a:data)
+        let stdout = str
       elseif a:event == 'stderr'
         let str = self.shell.' stderr: '.join(a:data)
+        echom stdout
         echom str
       else
         let str = self.shell.' exited'

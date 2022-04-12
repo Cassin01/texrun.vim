@@ -37,7 +37,7 @@ function! s:compile_latex()
           \ 'on_stderr': function('s:OnEvent'),
           \ 'on_exit': function('s:OnEvent')
           \ }
-    let s:job1 = jobstart(['zsh', '-c', 'lualatex ' . expand('%:r')], extend({'shell': 'shell 1'}, s:callbacks))
+    let s:job1 = jobstart(['zsh', '-c', 'lualatex --halt-on-error ' . expand('%:r')], extend({'shell': 'shell 1'}, s:callbacks))
   endif
 endfunction
 

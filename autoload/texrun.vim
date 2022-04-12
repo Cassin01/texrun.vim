@@ -27,7 +27,7 @@ function! s:compile_latex()
         let str = self.shell.' stdout: '.join(a:data)
       elseif a:event == 'stderr'
         let str = self.shell.' stderr: '.join(a:data)
-        echo str
+        echom str
       else
         let str = self.shell.' exited'
       endif

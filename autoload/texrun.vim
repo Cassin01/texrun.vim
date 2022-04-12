@@ -31,6 +31,7 @@ function! s:compile_latex()
         echom str
       else
         let str = self.shell.' exited'
+        echom str
       endif
     endfunction
     let s:callbacks = {

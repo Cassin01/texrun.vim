@@ -14,13 +14,11 @@ function! texrun#texrun_init()
   augroup FlowWriteFile
     au!
     autocmd BufWritePost *.tex :call s:compile_latex()
-    "autocmd BufWritePost *.rs :call s:reload_ctags()
   augroup END
 endfunction
 
 " Compile Latex
 function! s:compile_latex()
-  " if expand("%") == 'l02.tex' || expand("%") == 'l03.tex'
   if expand("%") == g:texrun#file_name
     function! s:OnEvent(job_id, data, event) dict
       if a:event == 'stdout'
@@ -39,7 +37,9 @@ function! s:compile_latex()
           \ 'on_stderr': function('s:OnEvent'),
           \ 'on_exit': function('s:OnEvent')
           \ }
-    let s:job1 = jobstart(['zsh', '-c', 'lualatex --halt-on-error ' . expand('%:r')], extend({'shell': 'shell 1'}, s:callbacks))
+    " let s:job1 = jobstart(['zsh', '-c', 'lualatex --halt-on-error ' . expand('%:r')], extend({'shell': 'shell 1'}, s:callbacks))
+    let cmd = '(cd ' . expand('%:h') . ' && lualatex --halt-on-error ' . expand('%:r') . ')'
+    let s:job1 = jobstart(['zsh', '-c', cmd], extend({'shell': 'shell 1'}, s:callbacks))
   endif
 endfunction
 

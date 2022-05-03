@@ -17,9 +17,22 @@ function! texrun#texrun_init()
   augroup END
 endfunction
 
+function! s:file_names()
+  if type(g:texrun#file_name) == v:t_string
+    return  expand("%") == g:texrun#file_name
+  elseif type(g:texrun#file_name) == v:t_list
+    for file_neme in g:texrun#file_name
+      if expand("%") == file_name
+        return v:true
+      endif
+    endfor
+  endif
+  return v:false
+endfunction
+
 " Compile Latex
 function! s:compile_latex()
-  if expand("%") == g:texrun#file_name
+  if s:file_names()
     function! s:OnEvent(job_id, data, event) dict
       if a:event == 'stdout'
         let str = self.shell.' stdout: '.join(a:data)

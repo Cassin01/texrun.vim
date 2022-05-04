@@ -39,9 +39,10 @@ function! s:compile_latex()
         echom str
       elseif a:event == 'stderr'
         let str = self.shell.' stderr: '.join(a:data)
-        echom str
+        " echom str
       else
         let str = self.shell.' exited'
+        echom str
       endif
     endfunction
     let s:callbacks = {

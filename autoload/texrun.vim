@@ -20,8 +20,8 @@ endfunction
 function! s:file_names()
   if type(g:texrun#file_name) == v:t_string
     return  expand("%") == g:texrun#file_name
-  elseif type(g:texrun#file_name) == v:t_dict
-    for file_neme in g:texrun#file_name
+  elseif type(g:texrun#file_name) == v:t_list
+   for file_neme in g:texrun#file_name
       if expand("%") == file_name
         return v:true
       endif

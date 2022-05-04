@@ -49,7 +49,8 @@ function! s:compile_latex()
           \ 'on_stderr': function('s:OnEvent'),
           \ 'on_exit': function('s:OnEvent')
           \ }
-    let cmd = '(cd ' . expand('%:h') . ' && lualatex --halt-on-error ' . expand('%:r') . ')'
+    " let cmd = '(cd ' . expand('%:h') . ' && lualatex --halt-on-error ' . expand('%:r') . ')'
+    let cmd = '(cd ' . expand('%:h') . ' && lualatex --halt-on-error -interaction=nonstopmode -file-line-error ' . expand('%:r') . ')'
     let s:job1 = jobstart(['zsh', '-c', cmd], extend({'shell': 'shell 1'}, s:callbacks))
   endif
 endfunction

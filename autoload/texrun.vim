@@ -19,12 +19,12 @@ endfunction
 
 function! s:file_names()
   if type(g:texrun#file_name) == v:t_string
-    return  expand("%x") == g:texrun#file_name
+    return  expand("%h") == g:texrun#file_name
   elseif type(g:texrun#file_name) == v:t_list
     for name in g:texrun#file_name
       echom name
-      echom expand("%x")
-      if expand("%x") == name
+      echom expand("%h")
+      if expand("%h") == name
         return v:true
       endif
     endfor

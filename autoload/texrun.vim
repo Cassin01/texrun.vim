@@ -22,6 +22,8 @@ function! s:file_names()
     return  expand("%x") == g:texrun#file_name
   elseif type(g:texrun#file_name) == v:t_list
     for name in g:texrun#file_name
+      echom name
+      echom expand("%x")
       if expand("%x") == name
         return v:true
       endif

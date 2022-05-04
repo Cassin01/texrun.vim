@@ -45,7 +45,7 @@ function! s:compile_latex()
         redir => s:messages
         messages
         redir END
-        echom get(split(s:messages, "\n"), -4, "")
+        echo get(split(s:messages, "\n"), -4, "")
         " echom str
       endif
     endfunction

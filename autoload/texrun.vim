@@ -18,13 +18,12 @@ function! texrun#texrun_init()
 endfunction
 
 function! s:file_names()
-  echom g:texrun#file_name
-  echom type(g:texrun#file_name)
   if type(g:texrun#file_name) == v:t_string
     return  expand("%") == g:texrun#file_name
   elseif type(g:texrun#file_name) == v:t_list
    for name in g:texrun#file_name
       if expand("%") == name
+        echom "huga"
         return v:true
       endif
     endfor

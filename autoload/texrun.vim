@@ -42,6 +42,10 @@ function! s:compile_latex()
         echom str
       else
         let str = self.shell.' exited'
+        redir => s:messages
+        messages
+        redir END
+        echom get(split(s:messages, "\n"), -4, "")
         " echom str
       endif
     endfunction

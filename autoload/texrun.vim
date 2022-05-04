@@ -21,8 +21,8 @@ function! s:file_names()
   if type(g:texrun#file_name) == v:t_string
     return  expand("%") == g:texrun#file_name
   elseif type(g:texrun#file_name) == v:t_list
+    echom "list"
    for name in g:texrun#file_name
-      echom name
       echom expand("%x")
       if expand("%") == name
         echom "huga"
